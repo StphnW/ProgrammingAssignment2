@@ -1,14 +1,21 @@
 # The makeCacheMatrix function allows you to create a matrix that you can cache its inverse.
 
 makeCacheMatrix <- function(x = numeric()) {
+  #function takes in values that is assigned for x
   m <- NULL 
+  # m is the cache for this function.  
+  # Four nested fuctions are set below (set(), get(),setsolve(),getsolve()
   set <- function(y) {
     x <<- y
     m <<- NULL
   }
+  #if values are passed thruogh set() function, the vector is stored in x and clears cache m by assigning "NULL" to it.   They symbol <<- alows the values x and m to be altered dynamically in parent function (makeCacheMatrix)
   get <- function() x
+  # get() function returns the values stored in x
   setsolve<- function(solve) m <<- solve
+  #setsolve() stores values passed through it in m (the cache)
   getsolve <- function() m
+  #getsolve retrieves the the values stored in m 
   list(set = set, get = get,
        setsolve = setsolve,
        getsolve = getsolve)
@@ -28,5 +35,5 @@ cacheSolve <- function(x, ...) {
   x$setsolve(m)
   ##takes the inverse
   m
-  ##prints the inverse of the original matrix
+  ##prints the inverse
 }
