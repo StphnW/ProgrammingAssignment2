@@ -10,8 +10,8 @@ makeCacheMatrix <- function(x = numeric()) {   #function takes in values that is
   }#if values are passed thruogh set() function, the vector is stored in x and clears cache m by assigning "NULL" to it.   They symbol <<- alows the values x and m to be altered dynamically in parent function (makeCacheMatrix)
   
   get <- function() x  # get() function returns the values stored in x
-  setsolve<- function(solve) m <<- solve #setsolve() stores values passed through it in m (the cache)
-  getsolve <- function() m #getsolve retrieves the the values stored in m 
+  setsolve<- function(solve) m <<- solve #setsolve() stores values passed through function in m (the cache)
+  getsolve <- function() m #getsolve retrieves the values stored in m 
   list(set = set, get = get,
        setsolve = setsolve,
        getsolve = getsolve)
@@ -26,7 +26,7 @@ cacheSolve <- function(x, ...) {
     return(m)
   } # If inverse has been created already, the message "getting cached data" and the inverse values will be returned.
   data <- x$get() 
-  m <- solve(data, ...)
+  m <- solve(data, ...) #if no inverse has been created and cached, the inverse of values will be calculated and stored.
   x$setsolve(m) 
   m  ##prints the inverse
 }
