@@ -28,7 +28,7 @@ cacheSolve <- function(x, ...) {
   if(!is.null(m)) {
     message("getting cached data")
     return(m)
-  ## If inverse has been created already, the message "getting cached data" will appear and then the inverse from the cache
+  ## If inverse has been created already, the message "getting cached data" and the inverse values will appear.
   }
   data <- x$get()
   m <- solve(data, ...)
